@@ -32,10 +32,11 @@ export const SignUp = () => {
         e.preventDefault();
         const signUpEmail = loginContainer.querySelector('#signupEmail').value;
         const signUpPassword = loginContainer.querySelector('#signupPassword').value;
-        const signUpPassword2 = loginContainer.querySelector('#signupPassword').value;
-        const signupMesseges = loginContainer.querySelector('#btnSendSignUp');
+        const signUpPassword2 = loginContainer.querySelector('#signupPassword2').value;
+        const signupMesseges = loginContainer.querySelector('#signupMesseges');
         if (signUpPassword === signUpPassword2){
-            authentification(signUpEmail, signUpPassword)
+            let response = await authentification(signUpEmail, signUpPassword)
+            signupMesseges.innerHTML = response
         } else {
             signupMesseges.innerHTML = `Password doesn't match`;
         }

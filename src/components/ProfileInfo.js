@@ -27,6 +27,8 @@ export const ProfileInfo = () => {
 
     profileInfoContainer.appendChild(contentProfile);
 
+    profileInfoContainer.querySelector('#navHome').setAttribute("class", "display-none")
+
     const btnSave = contentProfile.querySelector('#btnProfile');
 
     btnSave.addEventListener('click', (e) => {

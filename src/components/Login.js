@@ -13,6 +13,7 @@ export const Login = () => {
                     <input type="email" id="loginEmail" required>
                     <label for="login-password">Password</label>
                     <input type="password" id="loginPassword" required>
+                    <p id="loginMessage"></p>
                     <button type="submit" id="btnLogin">Login</button>
                 </form>
             </div>
@@ -38,13 +39,14 @@ export const Login = () => {
 
     const btnLogin = loginContainer.querySelector('#btnLogin');
     const btnSignUp = loginContainer.querySelector('#signup');
+    const loginMessage = loginContainer.querySelector('#loginMessage')
 
-    btnLogin.addEventListener('click', async (e) => {
+    btnLogin.addEventListener('click', (e) => {
         e.preventDefault();
         const loginEmail = loginContainer.querySelector('#loginEmail').value;
         const loginPassword = loginContainer.querySelector('#loginPassword').value;
         console.log(loginEmail, loginPassword)
-        await login(loginEmail, loginPassword)
+        login(loginEmail, loginPassword)
     });
 
     btnSignUp.addEventListener('click', (e) => {

@@ -19,6 +19,7 @@ export const Profile = () => {
 
     profileDiv.appendChild(Navbar())
 
+
     const namePhoto = document.createElement('div')
     namePhoto.setAttribute("class", "name-photo")
     namePhoto.innerHTML = profileNamePhoto
@@ -33,14 +34,9 @@ export const Profile = () => {
 
     profileDiv.appendChild(content)
 
-    const logout = Navbar().querySelector('#logout');
+    profileDiv.querySelector('#profilePerfil').setAttribute("class", "display-none")
 
     const linkEditProfile = namePhoto.querySelector('#linkEditProfile')
-
-    logout.addEventListener('click', (e) => {
-        e.preventDefault();
-        onNavigate('/');
-    });
 
     linkEditProfile.addEventListener('click', (e) => {
         e.preventDefault();

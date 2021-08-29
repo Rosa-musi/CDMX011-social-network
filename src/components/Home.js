@@ -14,6 +14,8 @@ export const Home = () => {
 
         home.appendChild(Publication())
 
+        home.querySelector('#navHome').setAttribute("class", "display-none")
+
         const content = document.createElement('div')
         content.setAttribute("class", "profile-content")
         content.innerHTML = viewContent

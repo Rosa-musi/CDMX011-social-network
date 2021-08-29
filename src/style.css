@@ -276,3 +276,10 @@ nav {
 .login-user {
     line-height: 0.1px;
 }
+
+.display {
+    display: block;
+}
+.display-none {
+    display: none;
+}

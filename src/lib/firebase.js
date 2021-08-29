@@ -6,7 +6,8 @@ export const authentification = (email, password) => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        //console.log(user);
+
         onNavigate('/home')
     })
     .catch((error) => {
@@ -27,6 +28,15 @@ export const login = (email, password) => {
         console.log(user);
         return 'exitoso';
     }) 
+    .catch((error) => {
+        if(error.code == "auth/wrong-password"){
+            console.log("wrong password")
+            return "Wrong password"
+        } else if (error.code == "auth/user-not-found") {
+            console.log("this user doesn't exsit")
+            return "This user doesn't exist"
+        }
+    })
 }
 
 
@@ -34,7 +44,7 @@ export const login = (email, password) => {
 export const logedUser = () => {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-            onNavigate('/home')
+            onNavigate('/home') //asignar window.location a '/' el path por defecto
         } else {
             onNavigate('/')
         }
