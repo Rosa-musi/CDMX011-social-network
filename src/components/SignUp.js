@@ -1,5 +1,4 @@
-import { onNavigate } from "../router/router.js";
-import { authentification } from "../lib/index.js";
+import { authentification } from "../lib/firebase.js";
 
 export const SignUp = () => {
     const view = `
@@ -29,15 +28,14 @@ export const SignUp = () => {
 
     const btnSendSignUp = loginContainer.querySelector('#btnSendSignUp');
 
-     btnSendSignUp.addEventListener('click', async(e) => {
+     btnSendSignUp.addEventListener('click', async (e) => {
         e.preventDefault();
         const signUpEmail = loginContainer.querySelector('#signupEmail').value;
         const signUpPassword = loginContainer.querySelector('#signupPassword').value;
         const signUpPassword2 = loginContainer.querySelector('#signupPassword').value;
         const signupMesseges = loginContainer.querySelector('#btnSendSignUp');
         if (signUpPassword === signUpPassword2){
-            await authentification(signUpEmail, signUpPassword);
-            onNavigate('/home');
+            authentification(signUpEmail, signUpPassword)
         } else {
             signupMesseges.innerHTML = `Password doesn't match`;
         }

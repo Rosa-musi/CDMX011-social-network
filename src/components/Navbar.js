@@ -1,4 +1,5 @@
 import { onNavigate } from "../router/router.js"
+import { logOutFn } from "../lib/firebase.js"
 
 export const Navbar = () => {
     const template =
@@ -22,9 +23,9 @@ export const Navbar = () => {
     const profile = navBar.querySelector('#profilePerfil');
     const logout = navBar.querySelector('#logout');
 
-    logout.addEventListener('click', (e) => {
+    logout.addEventListener('click', async (e) => {
         e.preventDefault();
-        onNavigate('/');
+        await logOutFn()
     });
 
     profile.addEventListener('click', (e) => {

@@ -1,3 +1,4 @@
+import { login } from "../lib/firebase.js";
 import { onNavigate } from "../router/router.js";
 
 export const Login = () => {
@@ -9,9 +10,9 @@ export const Login = () => {
             <div class="login-user">
                 <form action="" id="login-form" class="form">
                     <label for="login-email">Email</label>
-                    <input type="email" id="login-email" required>
+                    <input type="email" id="loginEmail" required>
                     <label for="login-password">Password</label>
-                    <input type="password" id="login-password" required>
+                    <input type="password" id="loginPassword" required>
                     <button type="submit" id="btnLogin">Login</button>
                 </form>
             </div>
@@ -38,9 +39,12 @@ export const Login = () => {
     const btnLogin = loginContainer.querySelector('#btnLogin');
     const btnSignUp = loginContainer.querySelector('#signup');
 
-    btnLogin.addEventListener('click', (e) => {
+    btnLogin.addEventListener('click', async (e) => {
         e.preventDefault();
-        onNavigate('/home');
+        const loginEmail = loginContainer.querySelector('#loginEmail').value;
+        const loginPassword = loginContainer.querySelector('#loginPassword').value;
+        console.log(loginEmail, loginPassword)
+        await login(loginEmail, loginPassword)
     });
 
     btnSignUp.addEventListener('click', (e) => {
