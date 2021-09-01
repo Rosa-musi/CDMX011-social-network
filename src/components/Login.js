@@ -1,4 +1,4 @@
-import { login } from "../lib/firebase.js";
+import { login, googleLogin } from "../lib/firebase.js";
 import { onNavigate } from "../router/router.js";
 
 export const Login = () => {
@@ -22,7 +22,7 @@ export const Login = () => {
                 <p class="division-2">O</p>
                 <hr class="division-3">
             </div>
-            <div class="login-google">
+            <div id="loginGoogle" class="login-google">
                 <img src="../img/icongoogle.png" alt="logo google" class="logo-google">
                 <p>Login with google</p>
             </div>
@@ -41,13 +41,39 @@ export const Login = () => {
     const btnSignUp = loginContainer.querySelector('#signup');
     const loginMessage = loginContainer.querySelector('#loginMessage')
 
-    btnLogin.addEventListener('click', (e) => {
+    btnLogin.addEventListener('click', async (e) => {
         e.preventDefault();
         const loginEmail = loginContainer.querySelector('#loginEmail').value;
         const loginPassword = loginContainer.querySelector('#loginPassword').value;
         console.log(loginEmail, loginPassword)
-        login(loginEmail, loginPassword)
+        try{
+            await login(loginEmail, loginPassword)
+        } catch (error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            if(error.code == "auth/wrong-password"){
+                console.log(errorCode)
+                console.log(errorMessage)
+                loginMessage.innerHTML = "Wrong password"
+            } else if (error.code == "auth/user-not-found") {
+                console.log(errorCode)
+                console.log(errorMessage)
+                loginMessage.innerHTML = "This user doesn't exist"
+            }
+        }
     });
+
+    let googleLoginDiv = loginContainer.querySelector('#loginGoogle')
+
+    googleLoginDiv.addEventListener('click', async (e) =>{
+        e.preventDefault()
+         try {
+            await googleLogin()
+        } catch (error) {
+            loginMessage.innerHTML = error.message
+        } 
+
+    })
 
     btnSignUp.addEventListener('click', (e) => {
         e.preventDefault();

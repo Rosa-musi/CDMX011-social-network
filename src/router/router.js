@@ -3,6 +3,7 @@ import { Login } from "../components/Login.js";
 import { Profile } from "../components/Profile.js";
 import { ProfileInfo } from "../components/ProfileInfo.js";
 import { SignUp } from "../components/SignUp.js";
+import { logedUser } from "../lib/firebase.js"
 
 
 export const routes = {
@@ -16,6 +17,7 @@ export const routes = {
 const rootDiv = document.getElementById('root')
 
 export const onNavigate = (pathname) => {
+    
     window.history.pushState({},
         pathname,
         window.location.origin + pathname,
@@ -27,8 +29,10 @@ export const onNavigate = (pathname) => {
 };
 
 window.onpopstate = () => {
+    
     while (rootDiv.firstChild) {
         rootDiv.removeChild(rootDiv.firstChild);
     }
     rootDiv.appendChild(routes[window.location.pathname]());
+    logedUser()
 };

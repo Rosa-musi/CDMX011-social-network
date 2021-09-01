@@ -1,4 +1,4 @@
-import { authentification } from "../lib/firebase.js";
+import { register } from "../lib/firebase.js";
 
 export const SignUp = () => {
     const view = `
@@ -35,8 +35,14 @@ export const SignUp = () => {
         const signUpPassword2 = loginContainer.querySelector('#signupPassword2').value;
         const signupMesseges = loginContainer.querySelector('#signupMesseges');
         if (signUpPassword === signUpPassword2){
-            let response = await authentification(signUpEmail, signUpPassword)
-            signupMesseges.innerHTML = response
+            console.log("no sé")
+            try {
+                await register(signUpEmail, signUpPassword)
+                console.log("exitoso")
+            } catch (error) {
+                signupMesseges.innerHTML = error.message
+            }
+            
         } else {
             signupMesseges.innerHTML = `Password doesn't match`;
         }

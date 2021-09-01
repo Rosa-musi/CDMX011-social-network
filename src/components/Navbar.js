@@ -26,9 +26,9 @@ export const Navbar = () => {
     const logout = navBar.querySelector('#logout');
  
 
-    logout.addEventListener('click', async (e) => {
+    logout.addEventListener('click', (e) => {
         e.preventDefault();
-        await logOutFn()
+        logOutFn()
     });
 
     profile.addEventListener('click', (e) => {
