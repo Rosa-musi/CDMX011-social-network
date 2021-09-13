@@ -1,28 +1,36 @@
-import { onGetPosts, deletePost, getPost, getUser, likePost, updatePost, onGetLikes, unlikePost } from "../../lib/firebase.js";
-import { onNavigate } from "../../router/router.js";
+/* eslint-disable import/no-mutable-exports */
+/* eslint-disable import/no-cycle */
+import {
+  onGetPosts,
+  deletePost,
+  getPost,
+  getUser,
+  likePost,
+  unlikePost,
+} from '../../lib/firebase.js';
+import { onNavigate } from '../../router/router.js';
 
-export let editStatus = false
-export let editPost
-export let idPostEdit
+export let editStatus = false;
+export let editPost;
+export let idPostEdit;
 
 export const RendPosts = () => {
-    editStatus = false
-    idPostEdit = ""
-    editPost = ""
+  editStatus = false;
+  idPostEdit = '';
+  editPost = '';
 
-    const user = getUser()
-    console.log({user})
-    const posts = document.createElement('div')
-    posts.classList.add("container-posts") 
-    
-    onGetPosts((querySnapshot) => {
-        posts.innerHTML = ""
-        querySnapshot.forEach(doc=> {
-            const post = doc.data()
-            const likedByUser = post.likes.includes(user.uid);
-            post.id = doc.id
-            posts.innerHTML += 
-                `<div class="review-container">
+  const user = getUser();
+  console.log({ user });
+  const posts = document.createElement('div');
+  posts.classList.add('container-posts');
+
+  onGetPosts((querySnapshot) => {
+    posts.innerHTML = "";
+    querySnapshot.forEach((doc) => {
+      const post = doc.data();
+      const likedByUser = post.likes.includes(user.uid);
+      post.id = doc.id;
+      posts.innerHTML += `<div class="review-container">
                     <div class="user-data">
                         <p class="getemail">${post.user}</p>
                         <p class="getemail">${post.date}</p>
@@ -46,78 +54,76 @@ export const RendPosts = () => {
                         </div>
                     </div>
                 </div>
-                `
-            
-            const deleteEdit = posts.querySelector(`#user-buttons-${post.id}`)
+                `;
 
-            if (post.user !== getUser().email){
-                deleteEdit.style.display = "none"
-            } 
+      const deleteEdit = posts.querySelector(`#user-buttons-${post.id}`);
 
-            const btnLike = posts.querySelectorAll(`.btn-like`)
-            //icon.src = '../img/heart.svg';
-            btnLike.forEach((btn) => {
-                btn.addEventListener('click', (e) => {
-                    const postId = e.target.dataset.id
-                    console.log(e.target.src)
-                    if (e.target.classList.contains('btn-like--solid')) {
-                        console.log('here')
-                        unlikePost(postId)
-                            .then(() => {
-                                btn.src = '../img/corazon-vacio.png';
-                                btn.classList.remove('btn-like--solid')
-                            })
-                            .catch(error => {
-                                console.error('error', error)
-                            })
-                    } else {
-                        likePost(postId)
-                            .then(() => {
-                                btn.src = '../img/heart-solid.svg';
-                                btn.classList.add('btn-like--solid')
-                            })
-                            .catch(error => {
-                                console.error('error', error)
-                            })
-                    }
-                })
-            })
-//             onGetLikes((querySnapshot)=> {
-//                 querySnapshot.forEach((like) =>{
-//                     let likes = like.data()
-//                     console.log(like.data())
-//                     console.log(likes.postId, post.id, likes.user, getUser().email)
-// /*                     if(likes.postId === post.id && likes.user === getUser().email){
-//                         btnLike.style.display = "none"
-//                         console.log("este post no")
-//                     } */
-//                 })
-//             })
-  
-            const btnDelete = document.querySelectorAll('.btn-delete')
-            btnDelete.forEach((btn)=> {
-                btn.addEventListener('click', async (e) => {
-                    swal('Are you sure to delete this post');
-                    await deletePost(e.target.dataset.id)
-                })
-            })
+      if (post.user !== getUser().email) {
+        deleteEdit.style.display = 'none';
+      }
 
-            const btnEdit = document.querySelectorAll('.btn-edit')
-            btnEdit.forEach((btn) => {
-                btn.addEventListener('click', async (e) => {
-                    const doc = await getPost(e.target.dataset.id)
-                    editPost = doc.data()
+      const btnLike = posts.querySelectorAll('.btn-like');
+      // icon.src = '../img/heart.svg';
+      btnLike.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const postId = e.target.dataset.id;
+          console.log(e.target.src);
+          if (e.target.classList.contains('btn-like--solid')) {
+            console.log('here');
+            unlikePost(postId)
+              .then(() => {
+                btn.src = '../img/corazon-vacio.png';
+                btn.classList.remove('btn-like--solid');
+              })
+              .catch((error) => {
+                console.error('error', error);
+              });
+          } else {
+            likePost(postId)
+              .then(() => {
+                btn.src = '../img/heart-solid.svg';
+                btn.classList.add('btn-like--solid');
+              })
+              .catch((error) => {
+                console.error('error', error);
+              });
+          }
+        });
+      });
+      //             onGetLikes((querySnapshot)=> {
+      //                 querySnapshot.forEach((like) =>{
+      //                     let likes = like.data()
+      //                     console.log(like.data())
+      //                     console.log(likes.postId, post.id, likes.user, getUser().email)
+      // /*                     if(likes.postId === post.id && likes.user === getUser().email){
+      //                         btnLike.style.display = "none"
+      //                         console.log("este post no")
+      //                     } */
+      //                 })
+      //             })
 
-                    editStatus = true
-                    idPostEdit = doc.id
+      const btnDelete = document.querySelectorAll('.btn-delete');
+      btnDelete.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+          swal('Are you sure to delete this post');
+          await deletePost(e.target.dataset.id);
+        });
+      });
 
-                    onNavigate('/post')
-                })
-            }) 
-        })
-    }) 
-    
+      const btnEdit = document.querySelectorAll('.btn-edit');
+      btnEdit.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
+          const docs = await getPost(e.target.dataset.id);
+          editPost = docs.data();
 
+          editStatus = true;
+          idPostEdit = doc.id;
 
-    return posts
-}
+          onNavigate('/post');
+        });
+      });
+    });
+  });
+
+  return posts;
+};
