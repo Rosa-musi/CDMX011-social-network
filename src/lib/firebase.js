@@ -90,23 +90,21 @@ export const getPost = (id) => fireSt.collection('posts').doc(id).get();
 export const updatePost = (id, updatedTask) => fireSt.collection('posts').doc(id).update(updatedTask);
 
 export const likePost = (postId) => {
-  const uid = firebase.auth().currentUser.uid;
+  const email = firebase.auth().currentUser.email;
   return fireSt
     .collection('posts')
     .doc(postId)
     .update({
-      likes: firebase.firestore.FieldValue.arrayUnion(uid),
+      likes: firebase.firestore.FieldValue.arrayUnion(email),
     });
 };
 
 export const unlikePost = (postId) => {
-  const uid = firebase.auth().currentUser.uid;
+  const email = firebase.auth().currentUser.email;
   return fireSt
     .collection('posts')
     .doc(postId)
     .update({
-      likes: firebase.firestore.FieldValue.arrayRemove(uid),
+      likes: firebase.firestore.FieldValue.arrayRemove(email),
     });
 };
-
-export const onGetLikes = (callback) => fireSt.collection('likes').onSnapshot(callback);
