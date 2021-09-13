@@ -10,7 +10,6 @@ html {
     min-height: 100%;
     margin: 0px;
     overflow-x: hidden;
-    line-height: 0.2;
     font-family: 'Open Sans', sans-serif;
     color: #968C83;
 }
@@ -456,6 +455,14 @@ h3 {
     cursor: pointer;
 }
 
+.inconDIV-like{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
 .icon-like {
     width: 15px;
     height: 15px;
@@ -464,6 +471,10 @@ h3 {
     border-color: darkred;
     margin-bottom: 4px;
     cursor: pointer;
+}
+
+.inconDIV-like p {
+    margin-left: 7px;
 }
 /* ==========================================Footer================================================= */
 
