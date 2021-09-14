@@ -75,7 +75,6 @@ export const RendPosts = () => {
             likePost(postId)
               .then(() => {
                 btn1.src = '../../img/heart.svg';
-                btn.classList.add('btn-like--solid');
                 console.log(thisPost.likes);
                 console.log('like');
               })
@@ -86,7 +85,6 @@ export const RendPosts = () => {
             unlikePost(postId)
               .then(() => {
                 console.log(thisPost.likes);
-                btn.classList.remove('btn-like--solid');
                 btn1.src = '../../img/corazon-vacio.png';
                 console.log('unlike');
               })

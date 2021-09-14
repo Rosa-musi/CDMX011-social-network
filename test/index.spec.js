@@ -1,3 +1,28 @@
+/* eslint-disable arrow-body-style */
+import MockFirebase from '../_mocks_/firebase-mock.js';
+import { savePosts } from '../src/lib/firebase.js';
+
+global.firebase = MockFirebase;
+
+describe('addPost', () => {
+  it('Could add a post', () => {
+    return savePosts(
+      'hola',
+      3,
+      'review',
+      'prueba@prueba.com',
+      'Fri Sep 10 2021',
+    ).then((data) => {
+      expect(data).toBe();
+    });
+  });
+});
+
+global.firebase = {
+  initializeApp: () => {},
+  auth: () => {},
+};
+
 // /**
 //  * @jest-enviroment jsdom
 //  */

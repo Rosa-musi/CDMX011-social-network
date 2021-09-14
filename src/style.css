@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 * {
     padding: 0px;
     margin: 0px;
@@ -47,9 +49,6 @@ html {
 .logo-nav {
     width: 350px;
     height: 60px;
-}
-.container-logo{
-    
 }
 
 nav {
@@ -129,6 +128,7 @@ margin: auto;
     margin: auto;
 }
 
+
 .addPublication {
     background-color: #F3F1F5;
     border-color: lightgrey;
@@ -170,7 +170,7 @@ margin: auto;
  ::placeholder {
     color: #968C83;
     font-size: 12px;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
 }
 
 .getemail {
@@ -218,7 +218,7 @@ input {
     height: 55px;
     margin-top: 5px;
     color: #630A10;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     overflow-wrap: break-word;
     font-size: 12px;
     width: 300px;
@@ -367,9 +367,6 @@ h3 {
     line-height: 10px;
 }
 
-.post {
-    height: 100px;
-}
 
 /* ============================================= rendPost ============================================== */
 .container-posts{
@@ -389,6 +386,7 @@ h3 {
     height: fit-content;
     margin: 10px;
     background-color: #F3F1F5;
+    padding: 8px;
 }
 
 .user-data {
@@ -401,15 +399,16 @@ h3 {
     align-items: center;
     padding: 5px;
 }
+
 .container-review{ 
-    margin-top: 20px;
     width: 90%;
     background-color: white;
-    margin: auto;
+    margin: 15px auto 15px;                           
     overflow-wrap: break-word;
     word-wrap: break-word;
     line-height: 15px;
-    height: fit-content;        
+    height: fit-content;     
+    padding: 10px;   
 }
 
 .title-rating{
