@@ -43,7 +43,6 @@ export const Login = () => {
     console.log(email, password);
     try {
       await login(email, password);
-      // onNavigate('/home');
     } catch (error) {
       loginContainer.querySelector('#loginMessages').innerHTML = '&#x02716'.concat(' ', error.message);
     }

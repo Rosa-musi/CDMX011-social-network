@@ -6,7 +6,7 @@ export const Navbar = () => {
   const template = `
     <nav>
     <div class="container-logo">
-        <img class="logo-nav" src="../img/logo-nav2.png" alt="">
+        <img id="clickLogo" class="logo-nav" src="../img/logo-nav2.png" alt="">
     </div>
     </nav>
     <div class="menu-nav">
@@ -35,6 +35,11 @@ export const Navbar = () => {
     } catch (error) {
       alert(error);
     }
+  });
+
+  navBar.querySelector('#clickLogo').addEventListener('click', (e) => {
+    e.preventDefault();
+    onNavigate('/home');
   });
 
   return navBar;

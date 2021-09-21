@@ -1,56 +1,116 @@
-/* eslint-disable arrow-body-style */
-import MockFirebase from '../_mocks_/firebase-mock.js';
-import { savePosts } from '../src/lib/firebase.js';
+/**
+ * @jest-environment jsdom
+ */
+import './globals/firebaseTs.js';
+import { Login } from '../src/components/Login.js';
+import { SignUp } from '../src/components/SignUp.js';
+import { Post } from '../src/components/Post/PostForm';
+import { Navbar } from '../src/components/Navbar';
+import { Publication } from '../src/components/Publication';
+import { render } from '../src/lib/render.js';
 
-global.firebase = MockFirebase;
+describe('login', () => {
+  document.body.innerHTML = '<div id="root"></div>';
+  it('should render', () => {
+    const component = Login();
+    const rootDiv = document.getElementById('root');
+    render(rootDiv, component);
+    expect(rootDiv.innerHTML).toMatchSnapshot();
+  });
+  it('should log in user when clicked', () => {
+    const mockLogIn = jest.fn();
+    mockLogIn.mockImplementation(() => Promise.resolve());
 
-describe('addPost', () => {
-  it('Could add a post', () => {
-    return savePosts(
-      'hola',
-      3,
-      'review',
-      'prueba@prueba.com',
-      'Fri Sep 10 2021',
-    ).then((data) => {
-      expect(data).toBe();
-    });
+    firebase.auth = jest.fn().mockImplementation(() => ({
+      signInWithEmailAndPassword: mockLogIn,
+    }));
+    const component = Login();
+    const rootDiv = document.getElementById('root');
+    render(rootDiv, component);
+
+    const email = 'prueba@prueba.com';
+    const password = '123456';
+
+    document.getElementById('loginEmail').value = email;
+    document.getElementById('loginPassword').value = password;
+
+    document.getElementById('btnLogin').click();
+
+    expect(mockLogIn).toHaveBeenCalledWith(email, password);
+  });
+  it('Expected event when clicking the login button', () => {
+    const btnLogIn = document.getElementById('btnLogin');
+    btnLogIn.click();
+    expect(btnLogIn.outerHTML).toBe('<button type="submit" id="btnLogin">Login</button>');
   });
 });
 
-global.firebase = {
-  initializeApp: () => {},
-  auth: () => {},
-};
+describe('signUp', () => {
+  document.body.innerHTML = '<div id="root"></div>';
+  it('should render', () => {
+    const component = SignUp();
+    const rootDiv = document.getElementById('root');
+    render(rootDiv, component);
+    expect(rootDiv.innerHTML).toMatchSnapshot();
+  });
+  it('should resgister an user when clicked', () => {
+    const mockSignUp = jest.fn();
+    mockSignUp.mockImplementation(() => Promise.resolve());
 
-// /**
-//  * @jest-enviroment jsdom
-//  */
-// import './globals/firebase.js';
-// import { onNavigate } from '../src/router/router.js';
-// import { Login } from '../src/components/Login.js'
-// import { it } from 'jest-circus';
-// import { labelToName } from 'whatwg-encoding';:
+    firebase.auth = jest.fn().mockImplementation(() => ({
+      createUserWithEmailAndPassword: mockSignUp,
+    }));
 
-// const delay = (timeInMs = 100) => new Promise((resolve) => setTimeout(resolve, timeInMs));
+    const rootDiv = document.getElementById('root');
+    const component = SignUp();
+    render(rootDiv, component);
 
-// describe('Login', () => {
-//     document.body.innerHTML = '<div id= "root"></div';
-//     const rootDiv = document.getElementById('root');
-//     const fillOutAndSubmitForm = (email, password) => {
-//         document.getElementById('email').value = email;
-//         document.getElementById('password').value = password;
-//         document.getElementById('btnLogin').click();
-//     };
+    const email = 'prueba@prueba.com';
+    const password = '123456';
+    const passwordDos = '123456';
 
-//     it('renderiza', () => {
-//         onNavigate('/home');
+    document.querySelector('#signupEmail').value = email;
+    document.querySelector('#signupPassword').value = password;
+    document.querySelector('#signupPassword2').value = passwordDos;
 
-//         expect(rootDiv.innerHTML).toMatchSnapshot();
-//     });
-//     it('successful login', async() => {
-//         const email = 'ana@labo.com';
-//         const password = '123456';
-//         const uid = 'u7aBRSmc4kUqa74Wn9x9UAGwtPD2';
-//     })
-// });
+    const btnSignUp = document.getElementById('btnSendSignUp');
+    btnSignUp.click();
+    expect(mockSignUp).toHaveBeenCalledWith(email, password);
+  });
+  it('Expected event when clicking the signup button', () => {
+    const btnSignUp = document.getElementById('btnSendSignUp');
+    btnSignUp.click();
+    expect(btnSignUp.outerHTML).toBe('<button type="submit" id="btnSendSignUp">Sign Up</button>');
+  });
+});
+
+describe('post form', () => {
+  document.body.innerHTML = '<div id="root"></div>';
+  it('should render post form', () => {
+    const component = Post();
+    const rootDiv = document.getElementById('root');
+    render(rootDiv, component);
+    expect(rootDiv.innerHTML).toMatchSnapshot();
+  });
+  it('Expected event when clicking the signup button', () => {
+    const btnAddPost = document.getElementById('btnAddPost');
+    btnAddPost.click();
+    expect(btnAddPost.outerHTML).toBe('<button class="btnPost" id="btnAddPost" type="submit"><img class="icon-plus" src="../img/plusazul.png">Add Post</button>');
+  });
+});
+
+describe('home', () => {
+  document.body.innerHTML = '<div id="root"></div>';
+  it('should render nav bar', () => {
+    const component = Navbar();
+    const rootDiv = document.getElementById('root');
+    render(rootDiv, component);
+    expect(rootDiv.innerHTML).toMatchSnapshot();
+  });
+  it('should render Publication', () => {
+    const component = Publication();
+    const rootDiv = document.getElementById('root');
+    render(rootDiv, component);
+    expect(rootDiv.innerHTML).toMatchSnapshot();
+  });
+});

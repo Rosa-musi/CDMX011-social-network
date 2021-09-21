@@ -1,33 +1,35 @@
-const firestore = () => ({
-  collection: (nameColection) => ({
-    doc: () => ({
-      set: (objData) => new Promise((resolve) => {
-        resolve('el post fue añadido');
-      }),
-    }),
-  }),
-});
+/* eslint-disable no-unused-vars */
+const createUserWithEmailAndPassword = (email, password) => console.log("hi firebase")
+const signInWithEmailAndPassword = (email, password) => console.log("hi firebase")
 
 const firebase = {
-  firestore,
+  auth: {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+  },
 };
 
-export default jest.fn(() => firebase);
+export default firebase;
 
-/* const firestores = () => {
+/*
+const firestores = () => {
   return {
     collection: (nameColection) => {
       return {
-        add: () => {
-            return new Promise((resolve) => {
-                resolve('la nota fue agregada')
-            })
-        },
+          doc: () => {
+              return {
+                set: () => {
+                    return new Promise((resolve) => {
+                        resolve('la nota fue agregada')
+                    })
+                },
+              }
+          }
       };
     },
   };
 };
+
 export default jest.fn(() => {
   return firebase;
-});
-*/
+}); */

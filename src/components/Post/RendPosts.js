@@ -111,7 +111,7 @@ export const RendPosts = () => {
           editPost = docs.data();
 
           editStatus = true;
-          idPostEdit = doc.id;
+          idPostEdit = docs.id;
 
           onNavigate('/post');
         });
