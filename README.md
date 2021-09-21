@@ -1,4 +1,4 @@
-`# Creando una Red Social
+# Creando una Red Social
 ## Índice
 * [1. Resumen del proyecto](#1-resumen-del-proyecto)
 * [2. Quiénes son los principales usuarios de producto.](#2-Quiénes-son-los-principales-usuarios-de-producto)
