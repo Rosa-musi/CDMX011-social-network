@@ -22,14 +22,19 @@ en la que podamos **leer y escribir datos**.
 <img  src= "src/img/HU3y4.png">
 <img  src= "src/img/HU5y6.png">
 <img  src= "src/img/HU7.png">
+
 ## 5. Diseño de la Interfaz de Usuario
 #### Flujo de la aplicación:
 <img  src= "src/img/diagramasegundaiteracion.png" ><br>
+
 #### Prototipo de baja fidelidad:
 <img  src= "src/img/prototypeBF.png">
+
 #### Prototipo de alta Fidelidad:
 <img  src= "src/img/prototypesmobileAF.png">
+
 ## 6. Acceso a la Red Social LoveBook
+
 link: https://social-network-57ba3.web.app/
 Usuario de prueba : usuario@prueba.com
 Contraseña: 123456
