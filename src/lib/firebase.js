@@ -46,8 +46,10 @@ export const activeSession = () => {
 
 // Metodo para loguearse con Google
 
-const provider = new firebase.auth.GoogleAuthProvider();
-export const loginGoogle = () => auth.signInWithPopup(provider);
+export const loginGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  return firebase.auth().signInWithPopup(provider);
+};
 
 // // //Método para actualizar informacion basica del perfil updateProfile
 

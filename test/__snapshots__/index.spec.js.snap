@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`home should render Publication 1`] = `
+"<div class=\\"poster\\">
+    <div class=\\"addPublication\\">
+        <p class=\\"getemail\\"></p>
+    <div class=\\"container-addpost\\">   
+    <div> 
+        <img class=\\"photo-publication\\" src=\\"../img/addphoto.png\\">
+    </div>
+    <div class=\\"text-publication\\">
+        <a class=\\"textaddpost\\" href=\\"../components/Publications/Post.js\\" id=\\"addpublications\\"><img class=\\"icon-post\\" src=\\"../img/plusazul.png\\"> Add Post</a>
+    </div>
+    </div> 
+    </div></div>"
+`;
+
+exports[`home should render nav bar 1`] = `
+"<header class=\\"header-div\\">
+    <nav>
+    <div class=\\"container-logo\\">
+        <img class=\\"logo-nav\\" src=\\"../img/logo-nav2.png\\" alt=\\"\\">
+    </div>
+    </nav>
+    <div class=\\"menu-nav\\">
+        <ul>
+            <li><a id=\\"logout\\" href=\\"\\">
+                <div class=\\"signOff\\">
+                    <img class=\\"icon-nav\\" src=\\"../img/icons8-salir-redondeado-64.png\\">
+                    <p>Sign off</p>
+                </div>
+            </a></li>
+            <!-- <li><a href=\\"#\\" id=\\"profilePerfil\\"><img class= \\"icon-nav\\" src=\\"../img/iconsusuario.png\\">Profile</a></li>-->
+        </ul>
+    </div>
+    
+</header>"
+`;
+
+exports[`login should render 1`] = `
+"<div class=\\"acount\\">
+<div class=\\"acount-header\\">
+    <img src=\\"../img/logoFormLoveBook.png\\" class=\\"acount-logo\\" alt=\\"LoveBook logo\\">
+</div>
+<div class=\\"log-content\\">
+    <form action=\\"\\" id=\\"login-form\\" class=\\"form\\">
+        <label for=\\"login-email\\">Email</label>
+        <input type=\\"email\\" id=\\"loginEmail\\" required=\\"\\">
+        <label for=\\"login-password\\">Password</label>
+        <input type=\\"password\\" id=\\"loginPassword\\" required=\\"\\">
+        <div class=\\"error-message\\" id=\\"loginMessages\\"></div>
+        <button type=\\"submit\\" id=\\"btnLogin\\">Login</button>
+        <div class=\\"division\\">
+            <hr class=\\"division-1\\">
+            <p class=\\"division-2\\">O</p>
+            <hr class=\\"division-3\\">
+        </div>
+        <div class=\\"login-google\\">
+            <img src=\\"../img/icongoogle.png\\" alt=\\"logo google\\" class=\\"logo-google\\">
+            <a id=\\"withGoogle\\">Login with google</a>
+        </div>
+        <div class=\\"pieform\\">
+            <p style=\\"font-size: 12px;\\">You do not have an account</p>   
+        </div>
+        <button type=\\"submit\\" id=\\"signup\\">Sign Up</button>
+    </form>
+</div></div>"
+`;
+
+exports[`post form should render post form 1`] = `
+"<div><header class=\\"header-div\\">
+    <nav>
+    <div class=\\"container-logo\\">
+        <img class=\\"logo-nav\\" src=\\"../img/logo-nav2.png\\" alt=\\"\\">
+    </div>
+    </nav>
+    <div class=\\"menu-nav\\">
+        <ul>
+            <li><a id=\\"logout\\" href=\\"\\">
+                <div class=\\"signOff\\">
+                    <img class=\\"icon-nav\\" src=\\"../img/icons8-salir-redondeado-64.png\\">
+                    <p>Sign off</p>
+                </div>
+            </a></li>
+            <!-- <li><a href=\\"#\\" id=\\"profilePerfil\\"><img class= \\"icon-nav\\" src=\\"../img/iconsusuario.png\\">Profile</a></li>-->
+        </ul>
+    </div>
+    
+</header><div class=\\"containerpost\\">
+        <div id=\\"addPublication\\">
+            <div class=\\"form-Background\\">
+                <form action=\\"\\" id=\\"publicationsForm\\" class=\\"form\\">
+                    <label for=\\"Username\\">Title of the book</label>
+                    <input class=\\"inputpost\\" type=\\"text\\" id=\\"title\\" required=\\"\\">
+                    <label for=\\"rating\\">Rating</label>
+                    <input class=\\"inputpost\\" type=\\"number\\" id=\\"rating\\" min=\\"1\\" max=\\"10\\" required=\\"\\">
+                    <label for=\\"review\\">Review</label>
+                    <textarea class=\\"inputpost\\" type=\\"text\\" id=\\"review\\" required=\\"\\"></textarea>
+                    <button class=\\"btnPost\\" id=\\"btnAddPost\\" type=\\"submit\\"><img class=\\"icon-plus\\" src=\\"../img/plusazul.png\\">Add Post</button>
+                </form>
+            </div>
+        </div>
+        </div></div>"
+`;
+
+exports[`signUp should render 1`] = `
+"<div class=\\"acount\\">
+        <div class=\\"acount-header\\">
+            <img src=\\"../img/logoFormLoveBook.png\\" class=\\"acount-logo\\" alt=\\"LoveBook logo\\">
+        </div>
+        <div class=\\"log-content\\">
+            <form action=\\"\\" id=\\"signupForm\\" class=\\"form\\">
+                <label for=\\"signupUserName\\">Username</label>
+                <input type=\\"text\\" id=\\"signupUserName\\">
+                <label for=\\"signupEmail\\">Email</label>
+                <input type=\\"email\\" id=\\"signupEmail\\" required=\\"\\">
+                <label for=\\"signupPassword\\">Password</label>
+                <input type=\\"password\\" id=\\"signupPassword\\" required=\\"\\">
+                <label for=\\"signupPassword2\\">Confirm your password</label>
+                <input type=\\"password\\" id=\\"signupPassword2\\" required=\\"\\">
+                <div class=\\"error-message\\" id=\\"signupMesseges\\"></div>
+                <button type=\\"submit\\" id=\\"btnSendSignUp\\">Sign Up</button>
+            </form>
+        </div>
+        </div>"
+`;
