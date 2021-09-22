@@ -19,7 +19,7 @@ exports[`home should render nav bar 1`] = `
 "<header class=\\"header-div\\">
     <nav>
     <div class=\\"container-logo\\">
-        <img class=\\"logo-nav\\" src=\\"../img/logo-nav2.png\\" alt=\\"\\">
+        <img id=\\"clickLogo\\" class=\\"logo-nav\\" src=\\"../img/logo-nav2.png\\" alt=\\"\\">
     </div>
     </nav>
     <div class=\\"menu-nav\\">
@@ -35,28 +35,6 @@ exports[`home should render nav bar 1`] = `
     </div>
     
 </header>"
-`;
-
-exports[`login SignUp button 1`] = `
-"<div id=\\"root\\"><div class=\\"acount\\">
-        <div class=\\"acount-header\\">
-            <img src=\\"../img/logoFormLoveBook.png\\" class=\\"acount-logo\\" alt=\\"LoveBook logo\\">
-        </div>
-        <div class=\\"log-content\\">
-            <form action=\\"\\" id=\\"signupForm\\" class=\\"form\\">
-                <label for=\\"signupUserName\\">Username</label>
-                <input type=\\"text\\" id=\\"signupUserName\\">
-                <label for=\\"signupEmail\\">Email</label>
-                <input type=\\"email\\" id=\\"signupEmail\\" required=\\"\\">
-                <label for=\\"signupPassword\\">Password</label>
-                <input type=\\"password\\" id=\\"signupPassword\\" required=\\"\\">
-                <label for=\\"signupPassword2\\">Confirm your password</label>
-                <input type=\\"password\\" id=\\"signupPassword2\\" required=\\"\\">
-                <div class=\\"error-message\\" id=\\"signupMesseges\\"></div>
-                <button type=\\"submit\\" id=\\"btnSendSignUp\\">Sign Up</button>
-            </form>
-        </div>
-        </div></div>"
 `;
 
 exports[`login should render 1`] = `
@@ -89,33 +67,11 @@ exports[`login should render 1`] = `
 </div></div>"
 `;
 
-exports[`login should render SignUp view when clicked 1`] = `
-"<div class=\\"acount\\">
-        <div class=\\"acount-header\\">
-            <img src=\\"../img/logoFormLoveBook.png\\" class=\\"acount-logo\\" alt=\\"LoveBook logo\\">
-        </div>
-        <div class=\\"log-content\\">
-            <form action=\\"\\" id=\\"signupForm\\" class=\\"form\\">
-                <label for=\\"signupUserName\\">Username</label>
-                <input type=\\"text\\" id=\\"signupUserName\\">
-                <label for=\\"signupEmail\\">Email</label>
-                <input type=\\"email\\" id=\\"signupEmail\\" required=\\"\\">
-                <label for=\\"signupPassword\\">Password</label>
-                <input type=\\"password\\" id=\\"signupPassword\\" required=\\"\\">
-                <label for=\\"signupPassword2\\">Confirm your password</label>
-                <input type=\\"password\\" id=\\"signupPassword2\\" required=\\"\\">
-                <div class=\\"error-message\\" id=\\"signupMesseges\\"></div>
-                <button type=\\"submit\\" id=\\"btnSendSignUp\\">Sign Up</button>
-            </form>
-        </div>
-        </div>"
-`;
-
 exports[`post form should render post form 1`] = `
 "<div><header class=\\"header-div\\">
     <nav>
     <div class=\\"container-logo\\">
-        <img class=\\"logo-nav\\" src=\\"../img/logo-nav2.png\\" alt=\\"\\">
+        <img id=\\"clickLogo\\" class=\\"logo-nav\\" src=\\"../img/logo-nav2.png\\" alt=\\"\\">
     </div>
     </nav>
     <div class=\\"menu-nav\\">
