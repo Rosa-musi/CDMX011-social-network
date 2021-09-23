@@ -1,39 +1,40 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 import { onNavigate } from '../router/router.js';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCr9r5Gh3K7FUuYboZgmcX8NOcQcUr-frM',
-  authDomain: 'social-network-57ba3.firebaseapp.com',
-  projectId: 'social-network-57ba3',
-  storageBucket: 'social-network-57ba3.appspot.com',
-  messagingSenderId: '22805731102',
-  appId: '1:22805731102:web:e9efc5d4c0937476979b0f',
+  apiKey: 'AIzaSyDU6ngi2asLmB3Sr3PJb_yKGfBbXJ1Gc_g',
+  authDomain: 'lovebook-9d30e.firebaseapp.com',
+  projectId: 'lovebook-9d30e',
+  storageBucket: 'lovebook-9d30e.appspot.com',
+  messagingSenderId: '35675623670',
+  appId: '1:35675623670:web:f437b6e916a0634b0bdcd7',
 };
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
 // Colocando el metodo de firebase en una constante.
-const auth = firebase.auth();
+// const auth = firebase.auth();
 // Initialize Firestore
-const fireSt = firebase.firestore();
+// const fireSt = firebase.firestore();
 
 // Metodo que me permite autenticar al  usuario con usuario y contraseña
-export const register = (email, password) => auth.createUserWithEmailAndPassword(email, password);
+export const register = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
 
 // Metodo que me permite acceder a mi cuenta con usuario y contraseña
-export const login = (email, password) => auth.signInWithEmailAndPassword(email, password);
+export const login = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
 
 // Metodo para obtener al usuario que accedio
 
-export const getUser = () => auth.currentUser;
+export const getUser = () => firebase.auth().currentUser;
 
 // Metodo para hacer que un usuario salga de la sesión
-export const signOut = () => auth.signOut();
+export const signOut = () => firebase.auth().signOut();
 
 // Metodo que indica si el usuario tiene la sesión activa
 
 export const activeSession = () => {
-  auth.onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       if (window.location.origin) {
         onNavigate('/home');
@@ -50,7 +51,6 @@ export const loginGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(provider);
 };
-
 // // //Método para actualizar informacion basica del perfil updateProfile
 
 // // getUser.updateProfile({
@@ -66,34 +66,33 @@ export const loginGoogle = () => {
 // Firestore
 
 // set collection
-export const savePosts = (title, rating, review, user, date) => fireSt.collection('posts').doc().set({
+export const savePosts = (title, rating, review, user, date) => firebase.firestore().collection('posts').doc().set({
   title,
   rating,
   review,
   user,
   date,
-  // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
   likes: [],
 });
 
 // Get the post as they are entered
 
-export const onGetPosts = (callback) => fireSt.collection('posts').onSnapshot(callback);
+export const onGetPosts = (callback) => firebase.firestore().collection('posts').onSnapshot(callback);
 
 // Delete task
 
-export const deletePost = (id) => fireSt.collection('posts').doc(id).delete();
+export const deletePost = (id) => firebase.firestore().collection('posts').doc(id).delete();
 
 // Get task
 
-export const getPost = (id) => fireSt.collection('posts').doc(id).get();
+export const getPost = (id) => firebase.firestore().collection('posts').doc(id).get();
 
 // Update post
-export const updatePost = (id, updatedTask) => fireSt.collection('posts').doc(id).update(updatedTask);
+export const updatePost = (id, updatedTask) => firebase.firestore().collection('posts').doc(id).update(updatedTask);
 
 export const likePost = (postId) => {
   const email = firebase.auth().currentUser.email;
-  return fireSt
+  return firebase.firestore()
     .collection('posts')
     .doc(postId)
     .update({
@@ -103,7 +102,7 @@ export const likePost = (postId) => {
 
 export const unlikePost = (postId) => {
   const email = firebase.auth().currentUser.email;
-  return fireSt
+  return firebase.firestore()
     .collection('posts')
     .doc(postId)
     .update({

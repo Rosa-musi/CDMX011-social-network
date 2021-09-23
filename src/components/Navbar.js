@@ -13,7 +13,7 @@ export const Navbar = () => {
         <ul>
             <li ><a id="logout" href="">
                 <div class="signOff">
-                    <img class="icon-nav" src="../img/icons8-salir-redondeado-64.png">
+                    <img class="icon-nav" id="clickLogo" src="../img/icons8-salir-redondeado-64.png">
                     <p>Sign off</p>
                 </div>
             </a></li>
@@ -35,6 +35,11 @@ export const Navbar = () => {
     } catch (error) {
       alert(error);
     }
+  });
+
+  navBar.querySelector('#clickLogo').addEventListener('click', (e) => {
+    e.preventDefault();
+    onNavigate('/home');
   });
 
   return navBar;

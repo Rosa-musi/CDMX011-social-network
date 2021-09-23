@@ -67,7 +67,7 @@ export const Post = () => {
     });
   } else {
     console.log('positivo');
-    btnAddPost.textContent = 'pdate';
+    btnAddPost.textContent = 'update';
     title.value = editPost.title;
     rating.value = editPost.rating;
     review.value = editPost.review;
